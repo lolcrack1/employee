@@ -3,7 +3,6 @@ package com.pratik.employee.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,13 +25,13 @@ public class EmployeeController {
 	private EmployeeService employeeService;
 	
 	@PostMapping
-	public EmployeeDTO createEmployee(@RequestBody @Validated CreateEmployeeDTO createEmployee)
+	public EmployeeDTO createEmployee(@RequestBody final CreateEmployeeDTO createEmployee)
 	{
 		return employeeService.createEmployee(createEmployee);
 	}
 	
 	@GetMapping(value = "/{id}")
-	public EmployeeDTO getEmployee(@PathVariable("id") final Long id)
+	public EmployeeDTO getEmployee(@PathVariable final Long id)
 	{
 		return employeeService.getEmployee(id);
 	}
@@ -44,13 +43,13 @@ public class EmployeeController {
 	}
 	
 	@PutMapping(value = "/{id}")
-	public EmployeeDTO updateEmployee(@PathVariable("id") final long id,@RequestBody CreateEmployeeDTO createEmployeeDTO)
+	public EmployeeDTO updateEmployee(@PathVariable final long id,@RequestBody final CreateEmployeeDTO createEmployeeDTO)
 	{
 		return employeeService.updateEmployee(id,createEmployeeDTO);
 	}
 	
 	@DeleteMapping(value = "/{id}")
-	public void deleteEmployee(@PathVariable("id") final long id)
+	public void deleteEmployee(@PathVariable final long id)
 	{
 		employeeService.deleteEmployee(id);
 	}
